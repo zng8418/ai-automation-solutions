@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Automation Solutions - 企业级数字化转型服务</title>
+    <meta name="description" content="企业级AI自动化与数字化转型解决方案，提供从咨询、开发到部署的全流程服务">
+    <meta name="keywords" content="AI自动化, 数字化转型, 企业自动化, 工作流引擎, 系统监控, 安全审计">
+
+    <!-- 安全头部 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- 内容安全策略 -->
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self'; 
+                   script-src 'self' 'unsafe-inline'; 
+                   style-src 'self' 'unsafe-inline';
+                   img-src 'self' data:;
+                   font-src 'self';">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+
+    <style>
+        /* [样式保持不变] */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-light);
+        }
+
+        /* [其余样式保持不变] */
+        .navbar {
+            background: var(--bg-white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .lang-selector {
+            position: relative;
+        }
+
+        .lang-select {
+            appearance: none;
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px 32px 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-select:hover {
+            border-color: var(--primary-color);
+        }
+
+        .lang-selector::after {
+            content: '▼';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            opacity: 0.95;
+            margin-bottom: 24px;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .advantages {
+            padding: 60px 20px;
+            background: var(--bg-white);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 48px;
+            color: var(--text-primary);
+        }
+
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+        }
+
+        .advantage-card {
+            text-align: center;
+            padding: 32px;
+            border-radius: 12px;
+            transition: transform 0.2s;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .advantage-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .advantage-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .services {
+            padding: 80px 20px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-8px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .service-desc {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+        }
+
+        .service-features li::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .solutions {
+            padding: 80px 20px;
+            background: var(--bg-white);
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .solution-card {
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .solution-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .solution-title {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .solution-desc {
+            color: var(--text-secondary);
+        }
+
+        .contact {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .contact-subtitle {
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+
+        /* 安全的邮箱显示 - 使用JavaScript动态生成 */
+        .contact-email {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .contact-email:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-info {
+            margin-top: 24px;
+            opacity: 0.8;
+        }
+
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 32px 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 16px;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-copyright {
+            opacity: 0.6;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span>🤖</span>
+                <span>AI Automation</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#services" data-i18n="nav_services">服务</a></li>
+                <li><a href="#solutions" data-i18n="nav_solutions">解决方案</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">联系我们</a></li>
+            </ul>
+            <div class="lang-selector">
+                <select id="langSelect" class="lang-select" onchange="setLang(this.value)">
+                    <option value="zh">🇨🇳 中文</option>
+                    <option value="en">🇺🇸 English</option>
+                    <option value="ja">🇯🇵 日本語</option>
+                    <option value="ko">🇰🇷 한국어</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="pt">🇧🇷 Português</option>
+                    <option value="ru">🇷🇺 Русский</option>
+                    <option value="ar">🇸🇦 العربية</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero 区域 -->
+    <section class="hero">
+        <div class="hero-content animate-in">
+            <h1 data-i18n="hero_title">AI自动化解决方案</h1>
+            <p class="hero-subtitle" data-i18n="hero_subtitle">企业级数字化转型服务</p>
+            <p class="hero-desc" data-i18n="hero_desc">专注于企业级AI自动化与数字化转型解决方案，提供从咨询、开发到部署的全流程服务</p>
+            <a href="#contact" class="cta-button" data-i18n="contact_btn">联系我们</a>
+        </div>
+    </section>
+
+    <!-- 核心优势 -->
+    <section class="advantages">
+        <div class="section-container">
+            <h2 class="section-title" data-i18n="advantage_title">核心优势</h2>
+            <div class="advantage-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">🔒</div>
+                    <div class="advantage-title" data-i18n="advantage_1">企业级安全</div>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">🎯</div>
+                    <div class="advantage-title" data-i18n="advantage_2">定制化方案</div>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">🕐</div>
+                    <div class="advantage-title" data-i18n="advantage_3">7×24支持</div>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">🚀</div>
+                    <div class="advantage-title" data-i18n="advantage_4">快速部署</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心服务 -->
+    <section id="services" class="services">
+        <div class="section-container">
+            <h2 class="section-title" data-i18n="services_title">核心服务</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <div class="service-title" data-i18n="service_1_title">企业自动化</div>
+                    <div class="service-desc" data-i18n="service_1_desc">智能工作流引擎，实现业务流程自动化</div>
+                    <ul class="service-features">
+                        <li>审批流程自动化</li>
+                        <li>报表生成与分发</li>
+                        <li>客户关系管理</li>
+                        <li>库存管理系统</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <div class="service-title" data-i18n="service_2_title">智能监控</div>
+                    <div class="service-desc" data-i18n="service_2_desc">全方位IT基础设施监控服务</div>
+                    <ul class="service-features">
+                        <li>服务器性能监控</li>
+                        <li>应用健康检查</li>
+                        <li>网络流量分析</li>
+                        <li>安全事件检测</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <div class="service-title" data-i18n="service_3_title">安全服务</div>
+                    <div class="service-desc" data-i18n="service_3_desc">企业级网络安全解决方案</div>
+                    <ul class="service-features">
+                        <li>安全风险评估</li>
+                        <li>漏洞扫描与修复</li>
+                        <li>合规性审计</li>
+                        <li>安全培训</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📄</div>
+                    <div class="service-title" data-i18n="service_4_title">文档智能</div>
+                    <div class="service-desc" data-i18n="service_4_desc">AI驱动的文档处理方案</div>
+                    <ul class="service-features">
+                        <li>合同文档解析</li>
+                        <li>票据自动识别</li>
+                        <li>档案数字化</li>
+                        <li>多格式转换</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <div class="service-title" data-i18n="service_5_title">情报分析</div>
+                    <div class="service-desc" data-i18n="service_5_desc">企业级情报收集与分析</div>
+                    <ul class="service-features">
+                        <li>市场情报收集</li>
+                        <li>竞品动态监控</li>
+                        <li>舆情实时分析</li>
+                        <li>行业趋势追踪</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <div class="service-title" data-i18n="service_6_title">API集成</div>
+                    <div class="service-desc" data-i18n="service_6_desc">企业系统集成解决方案</div>
+                    <ul class="service-features">
+                        <li>API接口设计</li>
+                        <li>第三方系统集成</li>
+                        <li>数据迁移服务</li>
+                        <li>微服务架构</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 解决方案 -->
+    <section id="solutions" class="solutions">
+        <div class="section-container">
+            <h2 class="section-title" data-i18n="solutions_title">解决方案</h2>
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-title" data-i18n="solution_1_title">中小企业套餐</div>
+                    <div class="solution-desc" data-i18n="solution_1_desc">适合初创企业和小型团队</div>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-title" data-i18n="solution_2_title">企业标准版</div>
+                    <div class="solution-desc" data-i18n="solution_2_desc">适合成长型企业</div>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-title" data-i18n="solution_3_title">企业定制版</div>
+                    <div class="solution-desc" data-i18n="solution_3_desc">适合大型企业和集团</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="contact">
+        <div class="section-container">
+            <h2 data-i18n="contact_title">联系我们</h2>
+            <p class="contact-subtitle" data-i18n="contact_subtitle">24小时内响应您的需求</p>
+            <!-- 邮箱地址使用JavaScript动态生成，防止爬虫 -->
+            <a id="emailLink" class="contact-email">
+                📧 点击发送邮件
+            </a>
+            <p class="contact-info" data-i18n="contact_working">工作时间: 周一至周五 9:00-18:00 (GMT+8)</p>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#services">Services</a>
+            <a href="#solutions">Solutions</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p class="footer-copyright">
+            © 2026 AI Automation Solutions. <span data-i18n="footer_rights">版权所有</span>
+        </p>
+        <p class="footer-copyright">
+            <span data-i18n="footer_made">用心制作</span> ❤️
+        </p>
+    </footer>
+
+    <!-- 多语言脚本 -->
+    <script src="js/translations.js"></script>
+
+    <!-- 邮箱保护脚本 -->
+    <script>
+        // 安全的邮箱链接生成
+        (function() {
+            var user = '27987889';
+            var domain = 'szjacky.com';
+            var email = user + '@' + domain;
+
+            var emailLink = document.getElementById('emailLink');
+            if (emailLink) {
+                emailLink.href = 'mailto:' + email;
+                emailLink.innerHTML = '📧 ' + email;
+            }
+        })();
+    </script>
+</body>
+</html>
