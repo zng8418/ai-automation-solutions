@@ -272,7 +272,7 @@ AI/ML: OpenAI, Claude, Local LLMs
 ## 📞 联系我们
 
 ### 商务咨询
-📧 **Email**: [27987889@szjacky.com](mailto:27987889@szjacky.com)
+📧 **Email**: [27987889@qq.com](mailto:27987889@qq.com)
 
 ### 技术支持
 🕐 **响应时间**: 24小时内回复
